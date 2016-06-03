@@ -98,6 +98,12 @@ parameters:
         Control the IP allocation for the InternalApiVirtualInterface port. E.g.
         [{'ip_address':'1.2.3.4'}]
     type: json
+  SDNinternalVirtualFixedIPs:
+    default: []
+    description: >
+        Control the IP allocation for the SDNinternalVirtualInterface port. E.g.
+        [{'ip_address':'1.2.3.4'}]
+    type: json    
   KeyName:
     default: default
     description: Name of an existing EC2 KeyPair to enable SSH access to the instances
@@ -672,6 +678,7 @@ parameters:
       - custom_constraint: nova.flavor
   ServiceNetMap:
     default:
+      SDNinternalNetwork: sdn_internal
       NeutronTenantNetwork: tenant
       CeilometerApiNetwork: internal_api
       MongoDbNetwork: internal_api
@@ -1222,6 +1229,9 @@ resources:
       ControlPlaneIpList: {get_attr: [Controller, ip_address]}
       ExternalIpList: {get_attr: [Controller, external_ip_address]}
       InternalApiIpList: {get_attr: [Controller, internal_api_ip_address]}
+      InternalApiIpList: {get_attr: [Controller, internal_api_ip_address]}
+      SDNinternalApiIpList: {get_attr: [Controller, sdn_internal_ip_address]}
+      SDNinternalIpList: {get_attr: [Controller, sdn_internal_ip_address]}
       StorageIpList: {get_attr: [Controller, storage_ip_address]}
       StorageMgmtIpList: {get_attr: [Controller, storage_mgmt_ip_address]}
       TenantIpList: {get_attr: [Controller, tenant_ip_address]}
@@ -1317,6 +1327,15 @@ resources:
       FixedIPs: {get_param: InternalApiVirtualFixedIPs}
       NetworkName: internal_api
 
+  SDNinternalVirtualIP:
+    depends_on: Networks
+    type: OS::TripleO::Network::Ports::SDNinternalVipPort
+    properties:
+      ControlPlaneIP: {get_attr: [ControlVirtualIP, fixed_ips, 0, ip_address]}
+      PortName: sdn_internal_virtual_ip
+      FixedIPs: {get_param: SDNinternalVirtualFixedIPs}
+      NetworkName: sdn_internal
+      
   StorageVirtualIP:
     depends_on: Networks
     type: OS::TripleO::Network::Ports::StorageVipPort
@@ -1343,6 +1362,8 @@ resources:
       ExternalIpUri: {get_attr: [PublicVirtualIP, ip_address_uri]}
       InternalApiIp: {get_attr: [InternalApiVirtualIP, ip_address]}
       InternalApiIpUri: {get_attr: [InternalApiVirtualIP, ip_address_uri]}
+      SDNinternalIp: {get_attr: [SDNinternalVirtualIP, ip_address]}
+      SDNinternalIpUri: {get_attr: [SDNinternalVirtualIP, ip_address_uri]}
       StorageIp: {get_attr: [StorageVirtualIP, ip_address]}
       StorageIpUri: {get_attr: [StorageVirtualIP, ip_address_uri]}
       StorageMgmtIp: {get_attr: [StorageMgmtVirtualIP, ip_address]}
@@ -1519,6 +1540,7 @@ resources:
           - {get_attr: [Controller, resource.0.storage_ip_address]}
           - {get_attr: [Controller, resource.0.storage_mgmt_ip_address]}
           - {get_attr: [Controller, resource.0.tenant_ip_address]}
+          - {get_attr: [Controller, resource.0.sdn_internal_address]}
 
   ControllerAllNodesValidationDeployment:
     type: OS::Heat::StructuredDeployments

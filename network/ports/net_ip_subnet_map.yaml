@@ -10,6 +10,9 @@ parameters:
   InternalApiIpSubnet:
     default: ''
     type: string
+  SDNinternalIpSubnet:
+    default: ''
+    type: string    
   StorageIpSubnet:
     default: ''
     type: string
@@ -41,6 +44,7 @@ outputs:
             - {get_param: ControlPlaneSubnetCidr}
       external: {get_param: ExternalIpSubnet}
       internal_api: {get_param: InternalApiIpSubnet}
+      sdn_internal: {get_param: SDNinternalIpSubnet}
       storage: {get_param: StorageIpSubnet}
       storage_mgmt: {get_param: StorageMgmtIpSubnet}
       tenant: {get_param: TenantIpSubnet}

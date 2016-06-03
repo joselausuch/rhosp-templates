@@ -18,6 +18,13 @@ parameters:
     default: ''
     type: string
     description: IP address with brackets in case of IPv6
+  SDNinternalIp:
+    default: ''
+    type: string
+  SDNinternalIpUri:
+    default: ''
+    type: string
+    description: IP address with brackets in case of IPv6    
   StorageIp:
     default: ''
     type: string
@@ -56,6 +63,7 @@ outputs:
       ctlplane: {get_param: ControlPlaneIp}
       external: {get_param: ExternalIp}
       internal_api: {get_param: InternalApiIp}
+      sdn_internal: {get_param: SDNinternalIp}
       storage: {get_param: StorageIp}
       storage_mgmt: {get_param: StorageMgmtIp}
       tenant: {get_param: TenantIp}
@@ -68,6 +76,7 @@ outputs:
       ctlplane: {get_param: ControlPlaneIp}
       external: {get_param: ExternalIpUri}
       internal_api: {get_param: InternalApiIpUri}
+      sdn_internal_api: {get_param: SDNinternalIpUri}
       storage: {get_param: StorageIpUri}
       storage_mgmt: {get_param: StorageMgmtIpUri}
       tenant: {get_param: TenantIpUri}

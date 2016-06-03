@@ -1,0 +1,62 @@
+heat_template_version: 2015-04-30
+
+description: >
+  SDN internal network
+
+parameters:
+  # the defaults here work for static IP assignment (IPAM) only
+  SDNinternalNetCidr:
+    default: '172.16.2.0/24'
+    description: Cidr for the SDN internal network
+    type: string
+  SDNinternalNetValueSpecs:
+    default: {'provider:physical_network': 'sdn_internal', 'provider:network_type': 'flat'}
+    description: Value specs for the SDN internal network
+    type: json
+  SDNinternalNetAdminStateUp:
+    default: false
+    description: This admin state of the network.
+    type: boolean
+  SDNinternalNetEnableDHCP:
+    default: false
+    description: Whether to enable DHCP on the associated subnet.
+    type: boolean
+  SDNinternalNetShared:
+    default: false
+    description: Whether this network is shared across all tenants.
+    type: boolean
+  SDNinternalNetName:
+    default: sdn_internal
+    description: The name of the SDN internal network
+    type: string
+  SDNinternalSubnetName:
+    default: sdn_internal_subnet
+    description: The name of the SDN internal subnet in Neutron.
+    type: string
+  SDNinternalAllocationPools:
+    default: [{'start': '172.20.0.10', 'end': '172.20.0.200'}]
+    description: Ip allocation pool range for the SDN internal network
+    type: json
+
+resources:
+  SDNinternalNetwork:
+    type: OS::Neutron::Net
+    properties:
+      admin_state_up: {get_param: SDNinternalNetAdminStateUp}
+      name: {get_param: SDNinternalNetName}
+      shared: {get_param: SDNinternalNetShared}
+      value_specs: {get_param: SDNinternalNetValueSpecs}
+
+  SDNinternalSubnet:
+    type: OS::Neutron::Subnet
+    properties:
+      cidr: {get_param: SDNinternalNetCidr}
+      enable_dhcp: {get_param: SDNinternalNetEnableDHCP}
+      name: {get_param: SDNinternalSubnetName}
+      network: {get_resource: SDNinternalNetwork}
+      allocation_pools: {get_param: SDNinternalAllocationPools}
+
+outputs:
+  OS::stack_id:
+    description: Neutron internal network
+    value: {get_resource: SDNinternalNetwork}

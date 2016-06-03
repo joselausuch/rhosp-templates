@@ -60,6 +60,7 @@ resource_registry:
 
   OS::TripleO::Network::External: network/noop.yaml
   OS::TripleO::Network::InternalApi: network/noop.yaml
+  OS::TripleO::Network::SDNinternal: network/noop.yaml
   OS::TripleO::Network::StorageMgmt: network/noop.yaml
   OS::TripleO::Network::Storage: network/noop.yaml
   OS::TripleO::Network::Tenant: network/noop.yaml
@@ -73,6 +74,7 @@ resource_registry:
   # Port assignments for the VIPs
   OS::TripleO::Network::Ports::ExternalVipPort: network/ports/noop.yaml
   OS::TripleO::Network::Ports::InternalApiVipPort: network/ports/noop.yaml
+  OS::TripleO::Network::Ports::SDNinternalVipPort: network/ports/noop.yaml
   OS::TripleO::Network::Ports::StorageVipPort: network/ports/noop.yaml
   OS::TripleO::Network::Ports::StorageMgmtVipPort: network/ports/noop.yaml
   OS::TripleO::Network::Ports::RedisVipPort: network/ports/ctlplane_vip.yaml
@@ -80,6 +82,7 @@ resource_registry:
   # Port assignments for the controller role
   OS::TripleO::Controller::Ports::ExternalPort: network/ports/noop.yaml
   OS::TripleO::Controller::Ports::InternalApiPort: network/ports/noop.yaml
+  OS::TripleO::Controller::Ports::SDNinternalPort: network/ports/noop.yaml
   OS::TripleO::Controller::Ports::StoragePort: network/ports/noop.yaml
   OS::TripleO::Controller::Ports::StorageMgmtPort: network/ports/noop.yaml
   OS::TripleO::Controller::Ports::TenantPort: network/ports/noop.yaml
@@ -88,6 +91,7 @@ resource_registry:
   # Port assignments for the compute role
   OS::TripleO::Compute::Ports::ExternalPort: network/ports/noop.yaml
   OS::TripleO::Compute::Ports::InternalApiPort: network/ports/noop.yaml
+  OS::TripleO::Compute::Ports::SDNinternalPort: network/ports/noop.yaml
   OS::TripleO::Compute::Ports::StoragePort: network/ports/noop.yaml
   OS::TripleO::Compute::Ports::StorageMgmtPort: network/ports/noop.yaml
   OS::TripleO::Compute::Ports::TenantPort: network/ports/noop.yaml
@@ -96,6 +100,7 @@ resource_registry:
   # Port assignments for the ceph storage role
   OS::TripleO::CephStorage::Ports::ExternalPort: network/ports/noop.yaml
   OS::TripleO::CephStorage::Ports::InternalApiPort: network/ports/noop.yaml
+  OS::TripleO::CephStorage::Ports::SDNinternalPort: network/ports/noop.yaml
   OS::TripleO::CephStorage::Ports::StoragePort: network/ports/noop.yaml
   OS::TripleO::CephStorage::Ports::StorageMgmtPort: network/ports/noop.yaml
   OS::TripleO::CephStorage::Ports::TenantPort: network/ports/noop.yaml
@@ -104,6 +109,7 @@ resource_registry:
   # Port assignments for the swift storage role
   OS::TripleO::SwiftStorage::Ports::ExternalPort: network/ports/noop.yaml
   OS::TripleO::SwiftStorage::Ports::InternalApiPort: network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::SDNinternalPort: network/ports/noop.yaml
   OS::TripleO::SwiftStorage::Ports::StoragePort: network/ports/noop.yaml
   OS::TripleO::SwiftStorage::Ports::StorageMgmtPort: network/ports/noop.yaml
   OS::TripleO::SwiftStorage::Ports::TenantPort: network/ports/noop.yaml
@@ -112,6 +118,7 @@ resource_registry:
   # Port assignments for the block storage role
   OS::TripleO::BlockStorage::Ports::ExternalPort: network/ports/noop.yaml
   OS::TripleO::BlockStorage::Ports::InternalApiPort: network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::SDNinternalPort: network/ports/noop.yaml
   OS::TripleO::BlockStorage::Ports::StoragePort: network/ports/noop.yaml
   OS::TripleO::BlockStorage::Ports::StorageMgmtPort: network/ports/noop.yaml
   OS::TripleO::BlockStorage::Ports::TenantPort: network/ports/noop.yaml

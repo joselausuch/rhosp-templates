@@ -11,6 +11,9 @@ parameters:
   InternalApiNetworkVip:
     default: ''
     type: string
+  SDNinternalNetworkVip:
+    default: ''
+    type: string    
   StorageNetworkVip:
     default: ''
     type: string
@@ -33,6 +36,12 @@ parameters:
   InternalApiIpUri:
     default: ''
     type: string
+  SDNinternalIp:
+    default: ''
+    type: string
+  SDNinternalIpUri:
+    default: ''
+    type: string    
   StorageIp:
     default: ''
     type: string
@@ -61,6 +70,7 @@ outputs:
       ctlplane: {get_param: ControlPlaneIP}
       external: {get_param: ExternalNetworkVip}
       internal_api: {get_param: InternalApiNetworkVip}
+      sdn_internal: {get_param: SDNinternalNetworkVip}
       storage: {get_param: StorageNetworkVip}
       storage_mgmt: {get_param: StorageMgmtNetworkVip}
   net_ip_uri_map:
@@ -71,5 +81,6 @@ outputs:
       ctlplane: {get_param: ControlPlaneIP}
       external: {get_param: ExternalNetworkVip}
       internal_api: {get_param: InternalApiNetworkVip}
+      sdn_internal: {get_param: SDNinternalNetworkVip}
       storage: {get_param: StorageNetworkVip}
       storage_mgmt: {get_param: StorageMgmtNetworkVip}
