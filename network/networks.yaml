@@ -22,5 +22,5 @@ resources:
   ManagementNetwork:
     type: OS::TripleO::Network::Management
 
-  SDNinternal:
+  SDNinternalNetwork:
     type: OS::TripleO::Network::SDNinternal
