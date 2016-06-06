@@ -80,10 +80,10 @@ parameter_defaults:
     - 172.17.0.210
     - 172.17.0.211
     sdn_internal:
-    - 172.16.0.204
-    - 172.16.0.205
-    - 172.16.0.210
-    - 172.16.0.211
+    - 172.20.0.204
+    - 172.20.0.205
+    - 172.20.0.210
+    - 172.20.0.211
   CephStorageIPs:
     # Each ceph node will get an IP from the lists below, first node, first IP
     storage:
