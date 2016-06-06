@@ -203,6 +203,13 @@ resources:
       IPPool: {get_param: BlockStorageIPs}
       NodeIndex: {get_param: NodeIndex}
 
+  SDNinternalPort:
+    type: OS::TripleO::Compute::Ports::SDNinternalPort
+    properties:
+      ControlPlaneIP: {get_attr: [NovaCompute, networks, ctlplane, 0]}
+      IPPool: {get_param: NovaComputeIPs}
+      NodeIndex: {get_param: NodeIndex}    
+      
   StoragePort:
     type: OS::TripleO::BlockStorage::Ports::StoragePort
     properties:
@@ -237,6 +244,7 @@ resources:
       ControlPlaneIp: {get_attr: [BlockStorage, networks, ctlplane, 0]}
       ExternalIpSubnet: {get_attr: [ExternalPort, ip_subnet]}
       InternalApiIpSubnet: {get_attr: [InternalApiPort, ip_subnet]}
+      SDNinternalIpSubnet: {get_attr: [SDNinternalPort, ip_subnet]}      
       StorageIpSubnet: {get_attr: [StoragePort, ip_subnet]}
       StorageMgmtIpSubnet: {get_attr: [StorageMgmtPort, ip_subnet]}
       TenantIpSubnet: {get_attr: [TenantPort, ip_subnet]}
@@ -250,6 +258,8 @@ resources:
       ExternalIpUri: {get_attr: [ExternalPort, ip_address_uri]}
       InternalApiIp: {get_attr: [InternalApiPort, ip_address]}
       InternalApiIpUri: {get_attr: [InternalApiPort, ip_address_uri]}
+      SDNinternalIp: {get_attr: [SDNinternalPort, ip_address]}
+      SDNinternalIpUri: {get_attr: [SDNinternalPort, ip_address_uri]}      
       StorageIp: {get_attr: [StoragePort, ip_address]}
       StorageIpUri: {get_attr: [StoragePort, ip_address_uri]}
       StorageMgmtIp: {get_attr: [StorageMgmtPort, ip_address]}
@@ -393,6 +403,9 @@ outputs:
   internal_api_ip_address:
     description: IP address of the server in the internal_api network
     value: {get_attr: [InternalApiPort, ip_address]}
+  sdn_internal_ip_address:
+    description: IP address of the server in the sdn_internal network
+    value: {get_attr: [SDNinternalPort, ip_address]}    
   storage_ip_address:
     description: IP address of the server in the storage network
     value: {get_attr: [StoragePort, ip_address]}

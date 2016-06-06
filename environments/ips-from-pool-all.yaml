@@ -1,39 +1,39 @@
 # Environment file demonstrating how to pre-assign IPs to all node types
 resource_registry:
-  OS::TripleO::Controller::Ports::ExternalPort: /home/stack/jose-templates/network/ports/external_from_pool.yaml
-  OS::TripleO::Controller::Ports::InternalApiPort: /home/stack/jose-templates/network/ports/internal_api_from_pool.yaml
-  OS::TripleO::Controller::Ports::StoragePort: /home/stack/jose-templates/network/ports/storage_from_pool.yaml
-  OS::TripleO::Controller::Ports::StorageMgmtPort: /home/stack/jose-templates/network/ports/storage_mgmt_from_pool.yaml
-  OS::TripleO::Controller::Ports::TenantPort: /home/stack/jose-templates/network/ports/tenant_from_pool.yaml
-  OS::TripleO::Controller::Ports::SDNinternalPort: /home/stack/jose-templates/network/ports/sdn_internal_from_pool.yaml
+  OS::TripleO::Controller::Ports::ExternalPort: ../network/ports/external_from_pool.yaml
+  OS::TripleO::Controller::Ports::InternalApiPort: ../network/ports/internal_api_from_pool.yaml
+  OS::TripleO::Controller::Ports::StoragePort: ../network/ports/storage_from_pool.yaml
+  OS::TripleO::Controller::Ports::StorageMgmtPort: ../network/ports/storage_mgmt_from_pool.yaml
+  OS::TripleO::Controller::Ports::TenantPort: ../network/ports/tenant_from_pool.yaml
+  OS::TripleO::Controller::Ports::SDNinternalPort: ../network/ports/sdn_internal_from_pool.yaml
 
-  OS::TripleO::Compute::Ports::ExternalPort: /home/stack/jose-templates/network/ports/noop.yaml
-  OS::TripleO::Compute::Ports::InternalApiPort: /home/stack/jose-templates/network/ports/internal_api_from_pool.yaml
-  OS::TripleO::Compute::Ports::StoragePort: /home/stack/jose-templates/network/ports/storage_from_pool.yaml
-  OS::TripleO::Compute::Ports::StorageMgmtPort: /home/stack/jose-templates/network/ports/noop.yaml
-  OS::TripleO::Compute::Ports::TenantPort: /home/stack/jose-templates/network/ports/tenant_from_pool.yaml
-  OS::TripleO::Compute::Ports::SDNinternalPort: /home/stack/jose-templates/network/ports/sdn_internal_from_pool.yaml
+  OS::TripleO::Compute::Ports::ExternalPort: ../network/ports/noop.yaml
+  OS::TripleO::Compute::Ports::InternalApiPort: ../network/ports/internal_api_from_pool.yaml
+  OS::TripleO::Compute::Ports::StoragePort: ../network/ports/storage_from_pool.yaml
+  OS::TripleO::Compute::Ports::StorageMgmtPort: ../network/ports/noop.yaml
+  OS::TripleO::Compute::Ports::TenantPort: ../network/ports/tenant_from_pool.yaml
+  OS::TripleO::Compute::Ports::SDNinternalPort: ../network/ports/sdn_internal_from_pool.yaml
 
-  OS::TripleO::CephStorage::Ports::ExternalPort: /home/stack/jose-templates/network/ports/noop.yaml
-  OS::TripleO::CephStorage::Ports::InternalApiPort: /home/stack/jose-templates/network/ports/noop.yaml
-  OS::TripleO::CephStorage::Ports::StoragePort: /home/stack/jose-templates/network/ports/storage_from_pool.yaml
-  OS::TripleO::CephStorage::Ports::StorageMgmtPort: /home/stack/jose-templates/network/ports/storage_mgmt_from_pool.yaml
-  OS::TripleO::CephStorage::Ports::TenantPort: /home/stack/jose-templates/network/ports/noop.yaml
-  OS::TripleO::CephStorage::Ports::SDNinternalPort: /home/stack/jose-templates/network/ports/noop.yaml
+  OS::TripleO::CephStorage::Ports::ExternalPort: ../network/ports/noop.yaml
+  OS::TripleO::CephStorage::Ports::InternalApiPort: ../network/ports/noop.yaml
+  OS::TripleO::CephStorage::Ports::StoragePort: ../network/ports/storage_from_pool.yaml
+  OS::TripleO::CephStorage::Ports::StorageMgmtPort: ../network/ports/storage_mgmt_from_pool.yaml
+  OS::TripleO::CephStorage::Ports::TenantPort: ../network/ports/noop.yaml
+  OS::TripleO::CephStorage::Ports::SDNinternalPort: ../network/ports/noop.yaml
 
-  OS::TripleO::SwiftStorage::Ports::ExternalPort: /home/stack/jose-templates/network/ports/noop.yaml
-  OS::TripleO::SwiftStorage::Ports::InternalApiPort: /home/stack/jose-templates/network/ports/internal_api_from_pool.yaml
-  OS::TripleO::SwiftStorage::Ports::StoragePort: /home/stack/jose-templates/network/ports/storage_from_pool.yaml
-  OS::TripleO::SwiftStorage::Ports::StorageMgmtPort: /home/stack/jose-templates/network/ports/storage_mgmt_from_pool.yaml
-  OS::TripleO::SwiftStorage::Ports::TenantPort: /home/stack/jose-templates/network/ports/noop.yaml
-  OS::TripleO::SwiftStorage::Ports::SDNinternalPort: /home/stack/jose-templates/network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::ExternalPort: ../network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::InternalApiPort: ../network/ports/internal_api_from_pool.yaml
+  OS::TripleO::SwiftStorage::Ports::StoragePort: ../network/ports/storage_from_pool.yaml
+  OS::TripleO::SwiftStorage::Ports::StorageMgmtPort: ../network/ports/storage_mgmt_from_pool.yaml
+  OS::TripleO::SwiftStorage::Ports::TenantPort: ../network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::SDNinternalPort: ../network/ports/noop.yaml
 
-  OS::TripleO::BlockStorage::Ports::ExternalPort: /home/stack/jose-templates/network/ports/noop.yaml
-  OS::TripleO::BlockStorage::Ports::InternalApiPort: /home/stack/jose-templates/network/ports/internal_api_from_pool.yaml
-  OS::TripleO::BlockStorage::Ports::StoragePort: /home/stack/jose-templates/network/ports/storage_from_pool.yaml
-  OS::TripleO::BlockStorage::Ports::StorageMgmtPort: /home/stack/jose-templates/network/ports/storage_mgmt_from_pool.yaml
-  OS::TripleO::BlockStorage::Ports::TenantPort: /home/stack/jose-templates/network/ports/noop.yaml
-  OS::TripleO::BlockStorage::Ports::SDNinternalPort: /home/stack/jose-templates/network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::ExternalPort: ../network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::InternalApiPort: ../network/ports/internal_api_from_pool.yaml
+  OS::TripleO::BlockStorage::Ports::StoragePort: ../network/ports/storage_from_pool.yaml
+  OS::TripleO::BlockStorage::Ports::StorageMgmtPort: ../network/ports/storage_mgmt_from_pool.yaml
+  OS::TripleO::BlockStorage::Ports::TenantPort: ../network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::SDNinternalPort: ../network/ports/noop.yaml
 
 parameter_defaults:
   ControllerIPs:
