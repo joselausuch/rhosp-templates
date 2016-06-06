@@ -1,0 +1,62 @@
+heat_template_version: 2015-04-30
+
+description: >
+  SDN northbound network
+
+parameters:
+  # the defaults here work for static IP assignment (IPAM) only
+  SDNnorthboundNetCidr:
+    default: '172.21.0.0/24'
+    description: Cidr for the SDN northbound network
+    type: string
+  SDNnorthboundNetValueSpecs:
+    default: {'provider:physical_network': 'sdn_northbound', 'provider:network_type': 'flat'}
+    description: Value specs for the SDN northbound network
+    type: json
+  SDNnorthboundNetAdminStateUp:
+    default: false
+    description: This admin state of the network.
+    type: boolean
+  SDNnorthboundNetEnableDHCP:
+    default: false
+    description: Whether to enable DHCP on the associated subnet.
+    type: boolean
+  SDNnorthboundNetShared:
+    default: false
+    description: Whether this network is shared across all tenants.
+    type: boolean
+  SDNnorthboundNetName:
+    default: sdn_northbound
+    description: The name of the SDN northbound network
+    type: string
+  SDNnorthboundSubnetName:
+    default: sdn_northbound_subnet
+    description: The name of the SDN northbound subnet in Neutron.
+    type: string
+  SDNnorthboundAllocationPools:
+    default: [{'start': '172.21.0.10', 'end': '172.21.0.200'}]
+    description: Ip allocation pool range for the SDN northbound network
+    type: json
+
+resources:
+  SDNnorthboundNetwork:
+    type: OS::Neutron::Net
+    properties:
+      admin_state_up: {get_param: SDNnorthboundNetAdminStateUp}
+      name: {get_param: SDNnorthboundNetName}
+      shared: {get_param: SDNnorthboundNetShared}
+      value_specs: {get_param: SDNnorthboundNetValueSpecs}
+
+  SDNnorthboundSubnet:
+    type: OS::Neutron::Subnet
+    properties:
+      cidr: {get_param: SDNnorthboundNetCidr}
+      enable_dhcp: {get_param: SDNnorthboundNetEnableDHCP}
+      name: {get_param: SDNnorthboundSubnetName}
+      network: {get_resource: SDNnorthboundNetwork}
+      allocation_pools: {get_param: SDNnorthboundAllocationPools}
+
+outputs:
+  OS::stack_id:
+    description: Neutron northbound network
+    value: {get_resource: SDNnorthboundNetwork}

@@ -2,6 +2,9 @@ resource_registry:
   OS::TripleO::Controller::Ports::ExternalPort: ../network/ports/external_from_pool.yaml
   OS::TripleO::Controller::Ports::InternalApiPort: ../network/ports/internal_api_from_pool.yaml
   OS::TripleO::Controller::Ports::SDNinternalPort: ../network/ports/sdn_internal_from_pool.yaml
+  OS::TripleO::Controller::Ports::SDNnorthboundPort: ../network/ports/sdn_northbound_from_pool.yaml
+  OS::TripleO::Controller::Ports::SDNsouthboundPort: ../network/ports/sdn_southbound_from_pool.yaml
+  OS::TripleO::Controller::Ports::SDNmanagementPort: ../network/ports/sdn_management_from_pool.yaml
   OS::TripleO::Controller::Ports::StoragePort: ../network/ports/storage_from_pool.yaml
   OS::TripleO::Controller::Ports::StorageMgmtPort: ../network/ports/storage_mgmt_from_pool.yaml
   OS::TripleO::Controller::Ports::TenantPort: ../network/ports/tenant_from_pool.yaml
@@ -20,4 +23,10 @@ parameter_defaults:
     tenant:
     - 172.16.0.251
     sdn_internal:
-    - 172.20.2.251
+    - 172.20.0.251
+    sdn_northbound:
+    - 172.21.0.251    
+    sdn_southbound:
+    - 172.22.0.251   
+    sdn_management:
+    - 172.23.0.251       

@@ -4,7 +4,7 @@ description: >
   Returns an IP from a network mapped list of IPs
 
 parameters:
-  SNDinternalNetName:
+  SDNinternalNetName:
     description: Name of the SDN internal network
     default: sdn_internal
     type: string
@@ -24,7 +24,7 @@ parameters:
     default: 0
     description: Index of the IP to get from Pool
     type: number
-  SNDinternalNetCidr:
+  SDNinternalNetCidr:
     default: '172.20.0.0/24'
     description: Cidr for the SDN internal network.
     type: string
@@ -32,17 +32,17 @@ parameters:
 outputs:
   ip_address:
     description: SDN internal network IP
-    value: {get_param: [IPPool, {get_param: SNDinternalNetName}, {get_param: NodeIndex}]}
+    value: {get_param: [IPPool, {get_param: SDNinternalNetName}, {get_param: NodeIndex}]}
   ip_address_uri:
     description: SDN internal network IP (for compatibility with sdn_internal_v6.yaml)
-    value: {get_param: [IPPool, {get_param: SNDinternalNetName}, {get_param: NodeIndex}]}
+    value: {get_param: [IPPool, {get_param: SDNinternalNetName}, {get_param: NodeIndex}]}
   ip_subnet:
     # FIXME: this assumes a 2 digit subnet CIDR (need more heat functions?)
     description: IP/Subnet CIDR for the SDN internal network IP
     value:
       list_join:
       - ''
-      - - {get_param: [IPPool, {get_param: SNDinternalNetName}, {get_param: NodeIndex}]}
+      - - {get_param: [IPPool, {get_param: SDNinternalNetName}, {get_param: NodeIndex}]}
         - '/'
-        - {get_param: [SNDinternalNetCidr, -2]}
-        - {get_param: [SNDinternalNetCidr, -1]}
+        - {get_param: [SDNinternalNetCidr, -2]}
+        - {get_param: [SDNinternalNetCidr, -1]}

@@ -33,6 +33,18 @@ parameters:
     default: ''
     description: IP address/subnet on the SDN internal network
     type: string
+  SDNnorthboundIpSubnet:
+    default: ''
+    description: IP address/subnet on the SDN northbound network
+    type: string
+  SDNsouthboundIpSubnet:
+    default: ''
+    description: IP address/subnet on the SDN southbound network
+    type: string
+  SDNmanagementIpSubnet:
+    default: ''
+    description: IP address/subnet on the SDN management network
+    type: string
   # Only populated when including environments/network-management.yaml
   # ManagementIpSubnet:
   #  default: ''
@@ -70,6 +82,18 @@ parameters:
   SDNinternalNetworkVlanID:
     default: 700
     description: Vlan ID for the SDN internal traffic
+    type: number
+  SDNnorthboundNetworkVlanID:
+    default: 701
+    description: Vlan ID for the SDN northbound traffic
+    type: number
+  SDNsouthboundNetworkVlanID:
+    default: 702
+    description: Vlan ID for the SDN southbound traffic
+    type: number
+  SDNmanagementNetworkVlanID:
+    default: 703
+    description: Vlan ID for the SDN management traffic
     type: number
   ExternalInterfaceDefaultRoute:
     default: '10.0.0.1'
@@ -173,6 +197,27 @@ resources:
                   addresses:
                     -
                       ip_netmask: {get_param: SDNinternalIpSubnet}
+                -
+                  type: vlan
+                  device: bond1
+                  vlan_id: {get_param: SDNnorthboundNetworkVlanID}
+                  addresses:
+                    -
+                      ip_netmask: {get_param: SDNnorthboundIpSubnet}
+                -
+                  type: vlan
+                  device: bond1
+                  vlan_id: {get_param: SDNsouthboundNetworkVlanID}
+                  addresses:
+                    -
+                      ip_netmask: {get_param: SDNsouthboundIpSubnet}
+                -
+                  type: vlan
+                  device: bond1
+                  vlan_id: {get_param: SDNmanagementNetworkVlanID}
+                  addresses:
+                    -
+                      ip_netmask: {get_param: SDNmanagementIpSubnet}
                 # Uncomment when including environments/network-management.yaml
                 #-
                 #  type: vlan

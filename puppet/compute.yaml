@@ -406,6 +406,27 @@ resources:
       IPPool: {get_param: NovaComputeIPs}
       NodeIndex: {get_param: NodeIndex}      
 
+  SDNnorthboundPort:
+    type: OS::TripleO::Compute::Ports::SDNnorthboundPort
+    properties:
+      ControlPlaneIP: {get_attr: [NovaCompute, networks, ctlplane, 0]}
+      IPPool: {get_param: NovaComputeIPs}
+      NodeIndex: {get_param: NodeIndex}    
+   
+  SDNsouthboundPort:
+    type: OS::TripleO::Compute::Ports::SDNsouthboundPort
+    properties:
+      ControlPlaneIP: {get_attr: [NovaCompute, networks, ctlplane, 0]}
+      IPPool: {get_param: NovaComputeIPs}
+      NodeIndex: {get_param: NodeIndex}    
+
+  SDNmanagementPort:
+    type: OS::TripleO::Compute::Ports::SDNmanagementPort
+    properties:
+      ControlPlaneIP: {get_attr: [NovaCompute, networks, ctlplane, 0]}
+      IPPool: {get_param: NovaComputeIPs}
+      NodeIndex: {get_param: NodeIndex}    
+      
   StoragePort:
     type: OS::TripleO::Compute::Ports::StoragePort
     properties:

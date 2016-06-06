@@ -37,6 +37,9 @@ resource_registry:
   OS::TripleO::Network::External: network/noop.yaml
   OS::TripleO::Network::InternalApi: network/noop.yaml
   OS::TripleO::Network::SDNinternal: network/noop.yaml
+  OS::TripleO::Network::SDNnorthbound: network/noop.yaml
+  OS::TripleO::Network::SDNsouthbound: network/noop.yaml
+  OS::TripleO::Network::SDNmanagement: network/noop.yaml
   OS::TripleO::Network::StorageMgmt: network/noop.yaml
   OS::TripleO::Network::Storage: network/noop.yaml
   OS::TripleO::Network::Tenant: network/noop.yaml
@@ -50,13 +53,19 @@ resource_registry:
   OS::TripleO::Controller::Ports::ExternalPort: network/ports/noop.yaml
   OS::TripleO::Controller::Ports::InternalApiPort: network/ports/noop.yaml
   OS::TripleO::Controller::Ports::SDNinternalPort: network/ports/noop.yaml
-  OS::TripleO::Controller::Ports::StoragePort: network/ports/noop.yaml
-  OS::TripleO::Controller::Ports::StorageMgmtPort: network/ports/noop.yaml
-  OS::TripleO::Controller::Ports::TenantPort: network/ports/noop.yaml
+  OS::TripleO::Controller::Ports::SDNnorthboundPort: network/ports/noop.yaml
+  OS::TripleO::Controller::Ports::SDNsouthboundPort: network/ports/noop.yaml
+  OS::TripleO::Controller::Ports::SDNmanagementPort: network/ports/noop.yaml
+  OS::TripleO::Controller::Ports::StoragePortPort: network/ports/noop.yaml
+  OS::TripleO::Controller::Ports::StorageMgmtPortPort: network/ports/noop.yaml
+  OS::TripleO::Controller::Ports::TenantPortPort: network/ports/noop.yaml
 
   # Port assignments for the compute role
   OS::TripleO::Compute::Ports::InternalApiPort: network/ports/noop.yaml
   OS::TripleO::Compute::Ports::SDNinternalPort: network/ports/noop.yaml
+  OS::TripleO::Compute::Ports::SDNnorthboundPort: network/ports/noop.yaml
+  OS::TripleO::Compute::Ports::SDNsouthboundPort: network/ports/noop.yaml
+  OS::TripleO::Compute::Ports::SDNmanagementPort: network/ports/noop.yaml
   OS::TripleO::Compute::Ports::StoragePort: network/ports/noop.yaml
   OS::TripleO::Compute::Ports::TenantPort: network/ports/noop.yaml
 
@@ -67,12 +76,18 @@ resource_registry:
   # Port assignments for the swift storage role
   OS::TripleO::SwiftStorage::Ports::InternalApiPort: network/ports/noop.yaml
   OS::TripleO::SwiftStorage::Ports::SDNinternalPort: network/ports/noop.yaml
-  OS::TripleO::SwiftStorage::Ports::StoragePort: network/ports/noop.yaml
-  OS::TripleO::SwiftStorage::Ports::StorageMgmtPort: network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::SDNnorthboundPort: network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::SDNsouthboundPort: network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::SDNmanagementPort: network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::StoragePortPort: network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::StorageMgmtPortPort: network/ports/noop.yaml
 
   # Port assignments for the block storage role
   OS::TripleO::BlockStorage::Ports::InternalApiPort: network/ports/noop.yaml
   OS::TripleO::BlockStorage::Ports::SDNinternalPort: network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::SDNnorthboundPort: network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::SDNsouthboundPort: network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::SDNmanagementPort: network/ports/noop.yaml
   OS::TripleO::BlockStorage::Ports::StoragePort: network/ports/noop.yaml
   OS::TripleO::BlockStorage::Ports::StorageMgmtPort: network/ports/noop.yaml
 

@@ -10,6 +10,9 @@ resource_registry:
   OS::TripleO::Network::Storage: ../network/storage.yaml
   OS::TripleO::Network::Tenant: ../network/tenant.yaml
   OS::TripleO::Network::SDNinternal: ../network/SDNinternal.yaml
+  OS::TripleO::Network::SDNnorthbound: ../network/SDNnorthbound.yaml
+  OS::TripleO::Network::SDNsouthbound: ../network/SDNsouthbound.yaml
+  OS::TripleO::Network::SDNmanagement: ../network/SDNmanagement.yaml
   # Management network is optional and disabled by default
   # OS::TripleO::Network::Management: ../network/noop.yaml
 
@@ -20,6 +23,9 @@ resource_registry:
   OS::TripleO::Network::Ports::StorageMgmtVipPort: ../network/ports/storage_mgmt.yaml
   OS::TripleO::Network::Ports::RedisVipPort: ../network/ports/vip.yaml
   OS::TripleO::Network::Ports::SDNinternalVipPort: ../network/ports/sdn_internal.yaml
+  OS::TripleO::Network::Ports::SDNnorthboundVipPort: ../network/ports/sdn_northbound.yaml
+  OS::TripleO::Network::Ports::SDNsouthboundVipPort: ../network/ports/sdn_southbound.yaml
+  OS::TripleO::Network::Ports::SDNmanagementVipPort: ../network/ports/sdn_management.yaml
 
   # Port assignments for the controller role
   OS::TripleO::Controller::Ports::ExternalPort: ../network/ports/external.yaml
@@ -29,6 +35,9 @@ resource_registry:
   OS::TripleO::Controller::Ports::TenantPort: ../network/ports/tenant.yaml
   # OS::TripleO::Controller::Ports::ManagementPort: ../network/ports/noop.yaml
   OS::TripleO::Controller::Ports::SDNinternalPort: ../network/ports/sdn_internal.yaml
+  OS::TripleO::Controller::Ports::SDNnorthboundPort: ../network/ports/sdn_northbound.yaml
+  OS::TripleO::Controller::Ports::SDNsouthboundPort: ../network/ports/sdn_southbound.yaml
+  OS::TripleO::Controller::Ports::SDNmanagementPort: ../network/ports/sdn_management.yaml
 
   # Port assignments for the compute role
   OS::TripleO::Compute::Ports::ExternalPort: ../network/ports/noop.yaml
@@ -38,6 +47,9 @@ resource_registry:
   OS::TripleO::Compute::Ports::TenantPort: ../network/ports/tenant.yaml
   # OS::TripleO::Compute::Ports::ManagementPort: ../network/ports/noop.yaml
   OS::TripleO::Compute::Ports::SDNinternalPort: ../network/ports/sdn_internal.yaml
+  OS::TripleO::Compute::Ports::SDNnorthboundPort: ../network/ports/sdn_northbound.yaml
+  OS::TripleO::Compute::Ports::SDNsouthboundPort: ../network/ports/sdn_southbound.yaml
+  OS::TripleO::Compute::Ports::SDNmanagementPort: ../network/ports/sdn_management.yaml
 
   # Port assignments for the ceph storage role
   OS::TripleO::CephStorage::Ports::ExternalPort: ../network/ports/noop.yaml
@@ -47,6 +59,9 @@ resource_registry:
   OS::TripleO::CephStorage::Ports::TenantPort: ../network/ports/noop.yaml
   # OS::TripleO::CephStorage::Ports::ManagementPort: ../network/ports/noop.yaml
   OS::TripleO::CephStorage::Ports::SDNinternalPort: ../network/ports/noop.yaml
+  OS::TripleO::CephStorage::Ports::SDNnorthboundPort: ../network/ports/noop.yaml
+  OS::TripleO::CephStorage::Ports::SDNsouthboundPort: ../network/ports/noop.yaml
+  OS::TripleO::CephStorage::Ports::SDNmanagementPort: ../network/ports/noop.yaml
 
   # Port assignments for the swift storage role
   OS::TripleO::SwiftStorage::Ports::ExternalPort: ../network/ports/noop.yaml
@@ -56,6 +71,9 @@ resource_registry:
   OS::TripleO::SwiftStorage::Ports::TenantPort: ../network/ports/noop.yaml
   # OS::TripleO::SwiftStorage::Ports::ManagementPort: ../network/ports/noop.yaml
   OS::TripleO::SwiftStorage::Ports::SDNinternalPort: ../network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::SDNnorthboundPort: ../network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::SDNsouthboundPort: ../network/ports/noop.yaml
+  OS::TripleO::SwiftStorage::Ports::SDNmanagementPort: ../network/ports/noop.yaml  
 
   # Port assignments for the block storage role
   OS::TripleO::BlockStorage::Ports::ExternalPort: ../network/ports/noop.yaml
@@ -65,6 +83,9 @@ resource_registry:
   OS::TripleO::BlockStorage::Ports::TenantPort: ../network/ports/noop.yaml
   # OS::TripleO::BlockStorage::Ports::ManagementPort: ../network/ports/noop.yaml
   OS::TripleO::BlockStorage::Ports::SDNinternalPort: ../network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::SDNnorthboundPort: ../network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::SDNsouthboundPort: ../network/ports/noop.yaml
+  OS::TripleO::BlockStorage::Ports::SDNmanagementpPort: ../network/ports/noop.yaml    
 
   # Port assignments for service virtual IPs for the controller role
   OS::TripleO::Controller::Ports::RedisVipPort: ../network/ports/vip.yaml

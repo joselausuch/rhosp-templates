@@ -13,6 +13,15 @@ parameters:
   SDNinternalIpSubnet:
     default: ''
     type: string    
+  SDNnorthboundIpSubnet:
+    default: ''
+    type: string
+  SDNsouthboundIpSubnet:
+    default: ''
+    type: string        
+  SDNmanagementIpSubnet:
+    default: ''
+    type: string    
   StorageIpSubnet:
     default: ''
     type: string
@@ -45,6 +54,9 @@ outputs:
       external: {get_param: ExternalIpSubnet}
       internal_api: {get_param: InternalApiIpSubnet}
       sdn_internal: {get_param: SDNinternalIpSubnet}
+      sdn_northbound: {get_param: SDNnorthboundIpSubnet}
+      sdn_southbound: {get_param: SDNsouthboundIpSubnet}
+      sdn_management: {get_param: SDNmanagementIpSubnet}
       storage: {get_param: StorageIpSubnet}
       storage_mgmt: {get_param: StorageMgmtIpSubnet}
       tenant: {get_param: TenantIpSubnet}

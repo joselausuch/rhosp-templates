@@ -1,0 +1,62 @@
+heat_template_version: 2015-04-30
+
+description: >
+  SDN management network
+
+parameters:
+  # the defaults here work for static IP assignment (IPAM) only
+  SDNmanagementNetCidr:
+    default: '172.23.0.0/24'
+    description: Cidr for the SDN management network
+    type: string
+  SDNmanagementNetValueSpecs:
+    default: {'provider:physical_network': 'sdn_management', 'provider:network_type': 'flat'}
+    description: Value specs for the SDN management network
+    type: json
+  SDNmanagementNetAdminStateUp:
+    default: false
+    description: This admin state of the network.
+    type: boolean
+  SDNmanagementNetEnableDHCP:
+    default: false
+    description: Whether to enable DHCP on the associated subnet.
+    type: boolean
+  SDNmanagementNetShared:
+    default: false
+    description: Whether this network is shared across all tenants.
+    type: boolean
+  SDNmanagementNetName:
+    default: sdn_management
+    description: The name of the SDN management network
+    type: string
+  SDNmanagementSubnetName:
+    default: sdn_management_subnet
+    description: The name of the SDN management subnet in Neutron.
+    type: string
+  SDNmanagementAllocationPools:
+    default: [{'start': '172.23.0.10', 'end': '172.23.0.200'}]
+    description: Ip allocation pool range for the SDN management network
+    type: json
+
+resources:
+  SDNmanagementNetwork:
+    type: OS::Neutron::Net
+    properties:
+      admin_state_up: {get_param: SDNmanagementNetAdminStateUp}
+      name: {get_param: SDNmanagementNetName}
+      shared: {get_param: SDNmanagementNetShared}
+      value_specs: {get_param: SDNmanagementNetValueSpecs}
+
+  SDNmanagementSubnet:
+    type: OS::Neutron::Subnet
+    properties:
+      cidr: {get_param: SDNmanagementNetCidr}
+      enable_dhcp: {get_param: SDNmanagementNetEnableDHCP}
+      name: {get_param: SDNmanagementSubnetName}
+      network: {get_resource: SDNmanagementNetwork}
+      allocation_pools: {get_param: SDNmanagementAllocationPools}
+
+outputs:
+  OS::stack_id:
+    description: Neutron management network
+    value: {get_resource: SDNmanagementNetwork}

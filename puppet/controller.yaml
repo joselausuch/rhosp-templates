@@ -832,6 +832,27 @@ resources:
       NodeIndex: {get_param: NodeIndex}
       ControlPlaneIP: {get_attr: [Controller, networks, ctlplane, 0]}
       
+  SDNnorthboundPort:
+    type: OS::TripleO::Controller::Ports::SDNnorthboundPort
+    properties:
+      IPPool: {get_param: ControllerIPs}
+      NodeIndex: {get_param: NodeIndex}
+      ControlPlaneIP: {get_attr: [Controller, networks, ctlplane, 0]}
+   
+  SDNsouthboundPort:
+    type: OS::TripleO::Controller::Ports::SDNsouthboundPort
+    properties:
+      IPPool: {get_param: ControllerIPs}
+      NodeIndex: {get_param: NodeIndex}
+      ControlPlaneIP: {get_attr: [Controller, networks, ctlplane, 0]}
+
+  SDNmanagementPort:
+    type: OS::TripleO::Controller::Ports::SDNmanagementPort
+    properties:
+      IPPool: {get_param: ControllerIPs}
+      NodeIndex: {get_param: NodeIndex}
+      ControlPlaneIP: {get_attr: [Controller, networks, ctlplane, 0]}
+                        
   StoragePort:
     type: OS::TripleO::Controller::Ports::StoragePort
     properties:
@@ -886,6 +907,9 @@ resources:
       ExternalIpSubnet: {get_attr: [ExternalPort, ip_subnet]}
       InternalApiIpSubnet: {get_attr: [InternalApiPort, ip_subnet]}
       SDNinternalIpSubnet: {get_attr: [SDNinternalPort, ip_subnet]}
+      SDNnorthboundIpSubnet: {get_attr: [SDNnorthboundPort, ip_subnet]}
+      SDNsouthboundIpSubnet: {get_attr: [SDNsouthboundPort, ip_subnet]}
+      SDNmanagementIpSubnet: {get_attr: [SDNmanagementPort, ip_subnet]}
       StorageIpSubnet: {get_attr: [StoragePort, ip_subnet]}
       StorageMgmtIpSubnet: {get_attr: [StorageMgmtPort, ip_subnet]}
       TenantIpSubnet: {get_attr: [TenantPort, ip_subnet]}
@@ -898,6 +922,9 @@ resources:
       ExternalIpSubnet: {get_attr: [ExternalPort, ip_subnet]}
       InternalApiIpSubnet: {get_attr: [InternalApiPort, ip_subnet]}
       SDNinternalIpSubnet: {get_attr: [SDNinternalPort, ip_subnet]}
+      SDNnorthboundIpSubnet: {get_attr: [SDNnorthboundPort, ip_subnet]}
+      SDNsouthboundIpSubnet: {get_attr: [SDNsouthboundPort, ip_subnet]}
+      SDNmanagementIpSubnet: {get_attr: [SDNmanagementPort, ip_subnet]}
       StorageIpSubnet: {get_attr: [StoragePort, ip_subnet]}
       StorageMgmtIpSubnet: {get_attr: [StorageMgmtPort, ip_subnet]}
       TenantIpSubnet: {get_attr: [TenantPort, ip_subnet]}

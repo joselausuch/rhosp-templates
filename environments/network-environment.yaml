@@ -14,6 +14,9 @@ parameter_defaults:
   # ManagementNetCidr: 172.20.0.0/24
   # SDN network
   SDNinternalCidr: 172.20.0.0/24
+  SDNnorthboundCidr: 172.21.0.0/24
+  SDNsouthboundCidr: 172.22.0.0/24
+  SDNmanagementCidr: 172.23.0.0/24
   ExternalNetCidr: 10.1.1.0/24
   InternalApiAllocationPools: [{'start': '172.16.0.10', 'end': '172.16.0.200'}]
   TenantAllocationPools: [{'start': '172.17.0.10', 'end': '172.17.0.200'}]
@@ -22,6 +25,9 @@ parameter_defaults:
   # ManagementAllocationPools: [{'start': '172.20.0.10', 'end': '172.20.0.200'}]
   # SDN network
   SDNinternalAllocationPools: [{'start': '172.20.0.10', 'end': '172.20.0.200'}]
+  SDNnorthboundAllocationPools: [{'start': '172.21.0.10', 'end': '172.21.0.200'}]
+  SDNsouthboundAllocationPools: [{'start': '172.22.0.10', 'end': '172.22.0.200'}]
+  SDNmanagementAllocationPools: [{'start': '172.23.0.10', 'end': '172.23.0.200'}]
 
   # Leave room for floating IPs in the External allocation pool
   ExternalAllocationPools: [{'start': '10.1.1.10', 'end': '10.1.1.50'}]
@@ -44,9 +50,9 @@ parameter_defaults:
   ExternalNetworkVlanID: 204
   # SDN network
   SDNinternalVlanID: 700
-  #SDNnorthboundVlanID: 701
-  #SDNsouthboundVlanID: 702
-  #SDNmanagementlanID: 703
+  SDNnorthboundVlanID: 701
+  SDNsouthboundVlanID: 702
+  SDNmanagementVlanID: 703
 
   # Set to "br-ex" if using floating IPs on native VLAN on bridge br-ex
   NeutronExternalNetworkBridge: "''"

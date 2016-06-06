@@ -24,3 +24,12 @@ resources:
 
   SDNinternalNetwork:
     type: OS::TripleO::Network::SDNinternal
+
+  SDNnorthboundNetwork:
+    type: OS::TripleO::Network::SDNnorthbound
+
+  SDNsouthboundNetwork:
+    type: OS::TripleO::Network::SDNsouthbound
+
+  SDNmanagementNetwork:
+    type: OS::TripleO::Network::SDNmanagement
