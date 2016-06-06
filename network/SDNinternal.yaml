@@ -6,7 +6,7 @@ description: >
 parameters:
   # the defaults here work for static IP assignment (IPAM) only
   SDNinternalNetCidr:
-    default: '172.16.2.0/24'
+    default: '172.20.0.0/24'
     description: Cidr for the SDN internal network
     type: string
   SDNinternalNetValueSpecs:
