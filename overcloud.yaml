@@ -1451,6 +1451,7 @@ resources:
         control_virtual_ip: {get_attr: [VipMap, net_ip_map, ctlplane]}
         public_virtual_ip: {get_attr: [VipMap, net_ip_map, external]}
         internal_api_virtual_ip: {get_attr: [VipMap, net_ip_map, internal_api]}
+        sdn_internal_virtual_ip: {get_attr: [VipMap, net_ip_map, sdn_internal]}
         storage_virtual_ip: {get_attr: [VipMap, net_ip_map, storage]}
         storage_mgmt_virtual_ip: {get_attr: [VipMap, net_ip_map, storage_mgmt]}
 

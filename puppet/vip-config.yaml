@@ -32,6 +32,7 @@ resources:
                 tripleo::loadbalancer::public_virtual_ip: {get_input: public_virtual_ip}
                 tripleo::loadbalancer::controller_virtual_ip: {get_input: control_virtual_ip}
                 tripleo::loadbalancer::internal_api_virtual_ip: {get_input: internal_api_virtual_ip}
+                tripleo::loadbalancer::sdn_internal_virtual_ip: {get_input: sdn_internal_virtual_ip}
                 tripleo::loadbalancer::storage_virtual_ip: {get_input: storage_virtual_ip}
                 tripleo::loadbalancer::storage_mgmt_virtual_ip: {get_input: storage_mgmt_virtual_ip}
                 tripleo::redis_notification::haproxy_monitor_ip: {get_input: control_virtual_ip}
