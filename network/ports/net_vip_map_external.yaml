@@ -13,7 +13,16 @@ parameters:
     type: string
   SDNinternalNetworkVip:
     default: ''
+    type: string   
+  SDNnorthboundNetworkVip:
+    default: ''
     type: string    
+  SDNsouthboundNetworkVip:
+    default: ''
+    type: string    
+  SDNmanagementNetworkVip:
+    default: ''
+    type: string                 
   StorageNetworkVip:
     default: ''
     type: string
@@ -42,6 +51,24 @@ parameters:
   SDNinternalIpUri:
     default: ''
     type: string    
+  SDNnorthboundIp:
+    default: ''
+    type: string
+  SDNnorthboundIpUri:
+    default: ''
+    type: string  
+  SDNsouthboundIp:
+    default: ''
+    type: string
+  SDNsouthboundIpUri:
+    default: ''
+    type: string  
+  SDNmanagementIp:
+    default: ''
+    type: string
+  SDNmanagementIpUri:
+    default: ''
+    type: string              
   StorageIp:
     default: ''
     type: string
@@ -71,6 +98,9 @@ outputs:
       external: {get_param: ExternalNetworkVip}
       internal_api: {get_param: InternalApiNetworkVip}
       sdn_internal: {get_param: SDNinternalNetworkVip}
+      sdn_northbound: {get_param: SDNnorthboundNetworkVip}
+      sdn_southbound: {get_param: SDNsouthboundNetworkVip}
+      sdn_management: {get_param: SDNmanagementNetworkVip}
       storage: {get_param: StorageNetworkVip}
       storage_mgmt: {get_param: StorageMgmtNetworkVip}
   net_ip_uri_map:
@@ -82,5 +112,8 @@ outputs:
       external: {get_param: ExternalNetworkVip}
       internal_api: {get_param: InternalApiNetworkVip}
       sdn_internal: {get_param: SDNinternalNetworkVip}
+      sdn_northbound: {get_param: SDNnorthboundNetworkVip}
+      sdn_southbound: {get_param: SDNsouthboundNetworkVip}
+      sdn_management: {get_param: SDNmanagementNetworkVip}      
       storage: {get_param: StorageNetworkVip}
       storage_mgmt: {get_param: StorageMgmtNetworkVip}

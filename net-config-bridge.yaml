@@ -19,7 +19,19 @@ parameters:
   SDNinternalIpSubnet:
     default: ''
     description: IP address/subnet on the internal API network
-    type: string    
+    type: string   
+  SDNnorthboundIpSubnet:
+    default: ''
+    description: IP address/subnet on the northbound API network
+    type: string 
+  SDNsouthboundIpSubnet:
+    default: ''
+    description: IP address/subnet on the southbound API network
+    type: string 
+  SDNmanagementIpSubnet:
+    default: ''
+    description: IP address/subnet on the management API network
+    type: string       
   StorageIpSubnet:
     default: ''
     description: IP address/subnet on the storage network

@@ -25,6 +25,27 @@ parameters:
     default: ''
     type: string
     description: IP address with brackets in case of IPv6    
+  SDNnorthboundIp:
+    default: ''
+    type: string
+  SDNnorthboundIpUri:
+    default: ''
+    type: string
+    description: IP address with brackets in case of IPv6
+  SDNsouthboundIp:
+    default: ''
+    type: string
+  SDNsouthboundIpUri:
+    default: ''
+    type: string
+    description: IP address with brackets in case of IPv6
+  SDNmanagementIp:
+    default: ''
+    type: string
+  SDNmanagementIpUri:
+    default: ''
+    type: string
+    description: IP address with brackets in case of IPv6                        
   StorageIp:
     default: ''
     type: string
@@ -64,6 +85,9 @@ outputs:
       external: {get_param: ExternalIp}
       internal_api: {get_param: InternalApiIp}
       sdn_internal: {get_param: SDNinternalIp}
+      sdn_northbound: {get_param: SDNnorthboundIp}
+      sdn_southbound: {get_param: SDNsouthboundIp}
+      sdn_management: {get_param: SDNmanagementIp}
       storage: {get_param: StorageIp}
       storage_mgmt: {get_param: StorageMgmtIp}
       tenant: {get_param: TenantIp}
@@ -76,7 +100,10 @@ outputs:
       ctlplane: {get_param: ControlPlaneIp}
       external: {get_param: ExternalIpUri}
       internal_api: {get_param: InternalApiIpUri}
-      sdn_internal_api: {get_param: SDNinternalIpUri}
+      sdn_internal: {get_param: SDNinternalIpUri}
+      sdn_northbound: {get_param: SDNnorthboundIpUri}
+      sdn_southbound: {get_param: SDNsouthboundIpUri}
+      sdn_management: {get_param: SDNmanagementIpUri}      
       storage: {get_param: StorageIpUri}
       storage_mgmt: {get_param: StorageMgmtIpUri}
       tenant: {get_param: TenantIpUri}

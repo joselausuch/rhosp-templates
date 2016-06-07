@@ -696,10 +696,6 @@ parameters:
       - custom_constraint: nova.flavor
   ServiceNetMap:
     default:
-      SDNinternalNetwork: sdn_internal
-      SDNnorthboundNetwork: sdn_northbound
-      SDNsouthboundNetwork: sdn_southbound
-      SDNmanagementNetwork: sdn_management
       NeutronTenantNetwork: tenant
       CeilometerApiNetwork: internal_api
       MongoDbNetwork: internal_api
@@ -1250,14 +1246,9 @@ resources:
       ControlPlaneIpList: {get_attr: [Controller, ip_address]}
       ExternalIpList: {get_attr: [Controller, external_ip_address]}
       InternalApiIpList: {get_attr: [Controller, internal_api_ip_address]}
-      InternalApiIpList: {get_attr: [Controller, internal_api_ip_address]}
-      SDNinternalApiIpList: {get_attr: [Controller, sdn_internal_ip_address]}
       SDNinternalIpList: {get_attr: [Controller, sdn_internal_ip_address]}
-      SDNnorthboundApiIpList: {get_attr: [Controller, sdn_northbound_ip_address]}
       SDNnorthboundIpList: {get_attr: [Controller, sdn_northbound_ip_address]}
-      SDNsouthboundApiIpList: {get_attr: [Controller, sdn_southbound_ip_address]}
       SDNsouthboundIpList: {get_attr: [Controller, sdn_southbound_ip_address]}
-      SDNmanagementApiIpList: {get_attr: [Controller, sdn_management_ip_address]}
       SDNmanagementIpList: {get_attr: [Controller, sdn_management_ip_address]}
       StorageIpList: {get_attr: [Controller, storage_ip_address]}
       StorageMgmtIpList: {get_attr: [Controller, storage_mgmt_ip_address]}

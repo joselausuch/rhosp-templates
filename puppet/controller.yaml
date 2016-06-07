@@ -891,6 +891,12 @@ resources:
       InternalApiIpUri: {get_attr: [InternalApiPort, ip_address_uri]}
       SDNinternalIp: {get_attr: [SDNinternalPort, ip_address]}
       SDNinternalIpUri: {get_attr: [SDNinternalPort, ip_address_uri]}
+      SDNnorthboundIp: {get_attr: [SDNnorthboundPort, ip_address]}
+      SDNnorthboundIpUri: {get_attr: [SDNnorthboundPort, ip_address_uri]}
+      SDNsouthboundIp: {get_attr: [SDNsouthboundPort, ip_address]}
+      SDNsouthboundIpUri: {get_attr: [SDNsouthboundPort, ip_address_uri]}
+      SDNmanagementIp: {get_attr: [SDNmanagementPort, ip_address]}
+      SDNmanagementIpUri: {get_attr: [SDNmanagementPort, ip_address_uri]}
       StorageIp: {get_attr: [StoragePort, ip_address]}
       StorageIpUri: {get_attr: [StoragePort, ip_address_uri]}
       StorageMgmtIp: {get_attr: [StorageMgmtPort, ip_address]}
@@ -1678,6 +1684,15 @@ outputs:
   sdn_internal_ip_address:
     description: IP address of the server in the sdn_internal network
     value: {get_attr: [SDNinternalPort, ip_address]}
+  sdn_northbound_ip_address:
+    description: IP address of the server in the sdn_northbound network
+    value: {get_attr: [SDNnorthboundPort, ip_address]}
+  sdn_southbound_ip_address:
+    description: IP address of the server in the sdn_southbound network
+    value: {get_attr: [SDNsouthboundPort, ip_address]}
+  sdn_management_ip_address:
+    description: IP address of the server in the sdn_management network
+    value: {get_attr: [SDNmanagementPort, ip_address]}        
   storage_ip_address:
     description: IP address of the server in the storage network
     value: {get_attr: [StoragePort, ip_address]}

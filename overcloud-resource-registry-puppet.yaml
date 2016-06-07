@@ -61,6 +61,9 @@ resource_registry:
   OS::TripleO::Network::External: network/noop.yaml
   OS::TripleO::Network::InternalApi: network/noop.yaml
   OS::TripleO::Network::SDNinternal: network/noop.yaml
+  OS::TripleO::Network::SDNnorthbound: network/noop.yaml
+  OS::TripleO::Network::SDNsouthbound: network/noop.yaml
+  OS::TripleO::Network::SDNmanagement: network/noop.yaml
   OS::TripleO::Network::StorageMgmt: network/noop.yaml
   OS::TripleO::Network::Storage: network/noop.yaml
   OS::TripleO::Network::Tenant: network/noop.yaml
