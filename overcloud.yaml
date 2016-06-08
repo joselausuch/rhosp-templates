@@ -103,25 +103,25 @@ parameters:
     description: >
         Control the IP allocation for the SDNinternalVirtualInterface port. E.g.
         [{'ip_address':'1.2.3.4'}]
-    type: json    
+    type: json
   SDNnorthboundVirtualFixedIPs:
     default: []
     description: >
         Control the IP allocation for the SDNnorthboundVirtualInterface port. E.g.
         [{'ip_address':'1.2.3.4'}]
-    type: json    
+    type: json
   SDNsouthboundVirtualFixedIPs:
     default: []
     description: >
         Control the IP allocation for the SDNsouthboundVirtualInterface port. E.g.
         [{'ip_address':'1.2.3.4'}]
-    type: json    
+    type: json
   SDNmanagementVirtualFixedIPs:
     default: []
     description: >
         Control the IP allocation for the SDNmanagementVirtualInterface port. E.g.
         [{'ip_address':'1.2.3.4'}]
-    type: json                
+    type: json
   KeyName:
     default: default
     description: Name of an existing EC2 KeyPair to enable SSH access to the instances
@@ -1353,7 +1353,7 @@ resources:
       PortName: sdn_internal_virtual_ip
       FixedIPs: {get_param: SDNinternalVirtualFixedIPs}
       NetworkName: sdn_internal
-      
+
   SDNnorthboundVirtualIP:
     depends_on: Networks
     type: OS::TripleO::Network::Ports::SDNnorthboundVipPort
@@ -1371,7 +1371,7 @@ resources:
       PortName: sdn_southbound_virtual_ip
       FixedIPs: {get_param: SDNsouthboundVirtualFixedIPs}
       NetworkName: sdn_southbound
-      
+
   SDNmanagementVirtualIP:
     depends_on: Networks
     type: OS::TripleO::Network::Ports::SDNmanagementVipPort
@@ -1380,7 +1380,7 @@ resources:
       PortName: sdn_management_virtual_ip
       FixedIPs: {get_param: SDNmanagementVirtualFixedIPs}
       NetworkName: sdn_management
-                        
+
   StorageVirtualIP:
     depends_on: Networks
     type: OS::TripleO::Network::Ports::StorageVipPort
@@ -1452,6 +1452,9 @@ resources:
         public_virtual_ip: {get_attr: [VipMap, net_ip_map, external]}
         internal_api_virtual_ip: {get_attr: [VipMap, net_ip_map, internal_api]}
         sdn_internal_virtual_ip: {get_attr: [VipMap, net_ip_map, sdn_internal]}
+        sdn_northbound_virtual_ip: {get_attr: [VipMap, net_ip_map, sdn_northbound]}
+        sdn_southbound_virtual_ip: {get_attr: [VipMap, net_ip_map, sdn_southbound]}
+        sdn_management_virtual_ip: {get_attr: [VipMap, net_ip_map, sdn_management]}
         storage_virtual_ip: {get_attr: [VipMap, net_ip_map, storage]}
         storage_mgmt_virtual_ip: {get_attr: [VipMap, net_ip_map, storage_mgmt]}
 
@@ -1592,10 +1595,10 @@ resources:
           - {get_attr: [Controller, resource.0.storage_ip_address]}
           - {get_attr: [Controller, resource.0.storage_mgmt_ip_address]}
           - {get_attr: [Controller, resource.0.tenant_ip_address]}
-          - {get_attr: [Controller, resource.0.sdn_internal_address]}
-          - {get_attr: [Controller, resource.0.sdn_northbound_address]}
-          - {get_attr: [Controller, resource.0.sdn_southbound_address]}
-          - {get_attr: [Controller, resource.0.sdn_management_address]}
+          - {get_attr: [Controller, resource.0.sdn_internal_ip_address]}
+          - {get_attr: [Controller, resource.0.sdn_northbound_ip_address]}
+          - {get_attr: [Controller, resource.0.sdn_southbound_ip_address]}
+          - {get_attr: [Controller, resource.0.sdn_management_ip_address]}
 
   ControllerAllNodesValidationDeployment:
     type: OS::Heat::StructuredDeployments

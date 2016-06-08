@@ -10,6 +10,18 @@ parameters:
   InternalApiIpList:
     default: []
     type: comma_delimited_list
+  SDNinternalIpList:
+    default: []
+    type: comma_delimited_list   
+  SDNnorthboundIpList:
+    default: []
+    type: comma_delimited_list 
+  SDNsouthboundIpList:
+    default: []
+    type: comma_delimited_list 
+  SDNmanagementIpList:
+    default: []
+    type: comma_delimited_list              
   StorageIpList:
     default: []
     type: comma_delimited_list
@@ -32,6 +44,10 @@ outputs:
       ctlplane: {get_param: ControlPlaneIpList}
       external: {get_param: ExternalIpList}
       internal_api: {get_param: InternalApiIpList}
+      sdn_internal: {get_param: SDNinternalIpList}
+      sdn_northbound: {get_param: SDNnorthboundIpList}
+      sdn_southbound: {get_param: SDNsouthboundIpList}
+      sdn_management: {get_param: SDNmanagementIpList}
       storage: {get_param: StorageIpList}
       storage_mgmt: {get_param: StorageMgmtIpList}
       tenant: {get_param: TenantIpList}
