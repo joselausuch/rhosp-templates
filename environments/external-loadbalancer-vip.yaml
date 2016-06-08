@@ -2,11 +2,13 @@ resource_registry:
   OS::TripleO::Network::Ports::NetVipMap: ../network/ports/net_vip_map_external.yaml
   OS::TripleO::Network::Ports::ExternalVipPort: ../network/ports/noop.yaml
   OS::TripleO::Network::Ports::InternalApiVipPort: ../network/ports/noop.yaml
+  OS::TripleO::Network::Ports::SDNinternalVipPort: ../network/ports/noop.yaml
   OS::TripleO::Network::Ports::StorageVipPort: ../network/ports/noop.yaml
   OS::TripleO::Network::Ports::StorageMgmtVipPort: ../network/ports/noop.yaml
   OS::TripleO::Network::Ports::RedisVipPort: ../network/ports/from_service.yaml
   OS::TripleO::Controller::Ports::ExternalPort: ../network/ports/external_from_pool.yaml
   OS::TripleO::Controller::Ports::InternalApiPort: ../network/ports/internal_api_from_pool.yaml
+  OS::TripleO::Controller::Ports::SDNinternalPort: ../network/ports/sdn_internal_from_pool.yaml
   OS::TripleO::Controller::Ports::StoragePort: ../network/ports/storage_from_pool.yaml
   OS::TripleO::Controller::Ports::StorageMgmtPort: ../network/ports/storage_mgmt_from_pool.yaml
   OS::TripleO::Controller::Ports::TenantPort: ../network/ports/tenant_from_pool.yaml
@@ -21,6 +23,7 @@ parameter_defaults:
   ControlPlaneIP: 192.0.2.251
   ExternalNetworkVip: 10.0.0.251
   InternalApiNetworkVip: 172.16.2.251
+  SDNinternalNetworkVip: 172.16.5.251
   StorageNetworkVip: 172.16.1.251
   StorageMgmtNetworkVip: 172.16.3.251
   ServiceVips:
@@ -30,6 +33,8 @@ parameter_defaults:
     - 10.0.0.253
     internal_api:
     - 172.16.2.253
+    sdn_internal:
+    - 172.16.5.253
     storage:
     - 172.16.1.253
     storage_mgmt:
