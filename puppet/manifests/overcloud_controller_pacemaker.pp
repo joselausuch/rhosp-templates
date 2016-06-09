@@ -396,6 +396,97 @@ if hiera('step') >= 2 {
         }
       }
       
+      $sdn_northbound_vip = hiera('tripleo::loadbalancer::sdn_northbound_virtual_ip')
+      if is_ipv6_address($sdn_northbound_vip) {
+        $sdn_northbound_vip_netmask = '64'
+      } else {
+        $sdn_northbound_vip_netmask = '32'
+      }
+      if $sdn_northbound_vip and $sdn_northbound_vip != $control_vip {
+        pacemaker::resource::ip { 'sdn_northbound_vip':
+          ip_address   => $sdn_northbound_vip,
+          cidr_netmask => $sdn_northbound_vip_netmask,
+        }
+        pacemaker::constraint::base { 'sdn_northbound_vip-then-haproxy':
+          constraint_type   => 'order',
+          first_resource    => "ip-${sdn_northbound_vip}",
+          second_resource   => 'haproxy-clone',
+          first_action      => 'start',
+          second_action     => 'start',
+          constraint_params => 'kind=Optional',
+          require           => [Pacemaker::Resource::Service['haproxy'],
+                                Pacemaker::Resource::Ip['sdn_northbound_vip']],
+        }
+        pacemaker::constraint::colocation { 'sdn_northbound_vip-with-haproxy':
+          source  => "ip-${sdn_northbound_vip}",
+          target  => 'haproxy-clone',
+          score   => 'INFINITY',
+          require => [Pacemaker::Resource::Service['haproxy'],
+                      Pacemaker::Resource::Ip['sdn_northbound_vip']],
+        }
+      }
+      
+      $sdn_southbound_vip = hiera('tripleo::loadbalancer::sdn_southbound_virtual_ip')
+      if is_ipv6_address($sdn_southbound_vip) {
+        $sdn_southbound_vip_netmask = '64'
+      } else {
+        $sdn_southbound_vip_netmask = '32'
+      }
+      if $sdn_southbound_vip and $sdn_southbound_vip != $control_vip {
+        pacemaker::resource::ip { 'sdn_southbound_vip':
+          ip_address   => $sdn_southbound_vip,
+          cidr_netmask => $sdn_southbound_vip_netmask,
+        }
+        pacemaker::constraint::base { 'sdn_southbound_vip-then-haproxy':
+          constraint_type   => 'order',
+          first_resource    => "ip-${sdn_southbound_vip}",
+          second_resource   => 'haproxy-clone',
+          first_action      => 'start',
+          second_action     => 'start',
+          constraint_params => 'kind=Optional',
+          require           => [Pacemaker::Resource::Service['haproxy'],
+                                Pacemaker::Resource::Ip['sdn_southbound_vip']],
+        }
+        pacemaker::constraint::colocation { 'sdn_southbound_vip-with-haproxy':
+          source  => "ip-${sdn_southbound_vip}",
+          target  => 'haproxy-clone',
+          score   => 'INFINITY',
+          require => [Pacemaker::Resource::Service['haproxy'],
+                      Pacemaker::Resource::Ip['sdn_southbound_vip']],
+        }
+      }
+      
+      $sdn_management_vip = hiera('tripleo::loadbalancer::sdn_management_virtual_ip')
+      if is_ipv6_address($sdn_management_vip) {
+        $sdn_management_vip_netmask = '64'
+      } else {
+        $sdn_management_vip_netmask = '32'
+      }
+      if $sdn_management_vip and $sdn_management_vip != $control_vip {
+        pacemaker::resource::ip { 'sdn_management_vip':
+          ip_address   => $sdn_management_vip,
+          cidr_netmask => $sdn_management_vip_netmask,
+        }
+        pacemaker::constraint::base { 'sdn_management_vip-then-haproxy':
+          constraint_type   => 'order',
+          first_resource    => "ip-${sdn_management_vip}",
+          second_resource   => 'haproxy-clone',
+          first_action      => 'start',
+          second_action     => 'start',
+          constraint_params => 'kind=Optional',
+          require           => [Pacemaker::Resource::Service['haproxy'],
+                                Pacemaker::Resource::Ip['sdn_management_vip']],
+        }
+        pacemaker::constraint::colocation { 'sdn_management_vip-with-haproxy':
+          source  => "ip-${sdn_management_vip}",
+          target  => 'haproxy-clone',
+          score   => 'INFINITY',
+          require => [Pacemaker::Resource::Service['haproxy'],
+                      Pacemaker::Resource::Ip['sdn_management_vip']],
+        }
+      }
+      
+        
       $storage_vip = hiera('tripleo::loadbalancer::storage_virtual_ip')
       if is_ipv6_address($storage_vip) {
         $storage_vip_netmask = '64'

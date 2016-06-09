@@ -3,6 +3,9 @@ resource_registry:
   OS::TripleO::Network::Ports::ExternalVipPort: ../../network/ports/vip.yaml
   OS::TripleO::Network::Ports::InternalApiVipPort: ../../network/ports/vip.yaml
   OS::TripleO::Network::Ports::SDNinternalVipPort: ../../network/ports/vip.yaml
+  OS::TripleO::Network::Ports::SDNnorthboundVipPort: ../../network/ports/vip.yaml
+  OS::TripleO::Network::Ports::SDNsouthboundVipPort: ../../network/ports/vip.yaml
+  OS::TripleO::Network::Ports::SDNmanagementVipPort: ../../network/ports/vip.yaml
   OS::TripleO::Network::Ports::StorageVipPort: ../../network/ports/vip.yaml
   OS::TripleO::Network::Ports::StorageMgmtVipPort: ../../network/ports/vip.yaml
   OS::TripleO::Network::Ports::TenantVipPort: ../../network/ports/vip.yaml

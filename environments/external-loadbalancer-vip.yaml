@@ -3,12 +3,18 @@ resource_registry:
   OS::TripleO::Network::Ports::ExternalVipPort: ../network/ports/noop.yaml
   OS::TripleO::Network::Ports::InternalApiVipPort: ../network/ports/noop.yaml
   OS::TripleO::Network::Ports::SDNinternalVipPort: ../network/ports/noop.yaml
+  OS::TripleO::Network::Ports::SDNnorthboundVipPort: ../network/ports/noop.yaml
+  OS::TripleO::Network::Ports::SDNsouthboundVipPort: ../network/ports/noop.yaml
+  OS::TripleO::Network::Ports::SDNmanagementVipPort: ../network/ports/noop.yaml
   OS::TripleO::Network::Ports::StorageVipPort: ../network/ports/noop.yaml
   OS::TripleO::Network::Ports::StorageMgmtVipPort: ../network/ports/noop.yaml
   OS::TripleO::Network::Ports::RedisVipPort: ../network/ports/from_service.yaml
   OS::TripleO::Controller::Ports::ExternalPort: ../network/ports/external_from_pool.yaml
   OS::TripleO::Controller::Ports::InternalApiPort: ../network/ports/internal_api_from_pool.yaml
   OS::TripleO::Controller::Ports::SDNinternalPort: ../network/ports/sdn_internal_from_pool.yaml
+  OS::TripleO::Controller::Ports::SDNnorthboundPort: ../network/ports/sdn_northbound_from_pool.yaml
+  OS::TripleO::Controller::Ports::SDNsouthboundPort: ../network/ports/sdn_southbound_from_pool.yaml
+  OS::TripleO::Controller::Ports::SDNmanagementPort: ../network/ports/sdn_management_from_pool.yaml
   OS::TripleO::Controller::Ports::StoragePort: ../network/ports/storage_from_pool.yaml
   OS::TripleO::Controller::Ports::StorageMgmtPort: ../network/ports/storage_mgmt_from_pool.yaml
   OS::TripleO::Controller::Ports::TenantPort: ../network/ports/tenant_from_pool.yaml
@@ -24,6 +30,9 @@ parameter_defaults:
   ExternalNetworkVip: 10.0.0.251
   InternalApiNetworkVip: 172.16.2.251
   SDNinternalNetworkVip: 172.16.5.251
+  SDNnorthboundNetworkVip: 172.16.6.251
+  SDNsouthboundNetworkVip: 172.16.7.251
+  SDNmanagementNetworkVip: 172.16.8.251
   StorageNetworkVip: 172.16.1.251
   StorageMgmtNetworkVip: 172.16.3.251
   ServiceVips:
@@ -35,6 +44,12 @@ parameter_defaults:
     - 172.16.2.253
     sdn_internal:
     - 172.16.5.253
+    sdn_northbound:
+    - 172.16.6.253
+    sdn_southbound:
+    - 172.16.7.253
+    sdn_management:
+    - 172.16.8.253            
     storage:
     - 172.16.1.253
     storage_mgmt:
